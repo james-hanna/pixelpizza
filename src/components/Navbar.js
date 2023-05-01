@@ -13,7 +13,7 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 z-50 w-full px-8 py-4 bg-[#cedcf5] shadow-xl ">
-      <div className="container mx-auto">
+      <div className="container mx-auto max-w-5xl">
         <div className="flex justify-between items-center">
           <div className="flex">
             <img src={pizza_icon} alt="ppicon" className="w-8 h-8 mr-2" />
@@ -21,10 +21,10 @@ const Navbar = () => {
               to="home"
               smooth={true}
               duration={500}
-              className="xsm:text-2xl md:text-xl font-bold text-gray-800 cursor-pointer space-x-2"
+              className="xsm:text-2xl lg:text-xl font-bold text-gray-800 cursor-pointer space-x-2"
             >
               {`Pixel Pizza `}
-              <span className="hidden md:inline-block">
+              <span className="hidden lg:inline-block">
                 <Typist
                   typingDelay={100}
                   loop={true}
