@@ -3,6 +3,9 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      colors: {
+        greyblue: "#cedcf5",
+      },
       screens: {
         xsm: "320px",
         // => @media (min-width: 320px)
@@ -25,6 +28,9 @@ module.exports = {
     },
     fontFamily: {
       pixel: ["pixel", "sans-serif"],
+      osrs: ["osrs", "sans-serif"],
+      crackman: ["crackman"],
+      gaming: ["gaming"],
     },
   },
   plugins: [],

@@ -9,3 +9,11 @@
     font-family: "osrs";
     src: url("./assets/fonts/runescape_uf.woff");
 }
+@font-face {
+    font-family: "crackman";
+    src: url("./assets/fonts/Crackman.ttf");
+}
+@font-face {
+    font-family: "gaming";
+    src: url("./assets/fonts/game.ttf");
+}

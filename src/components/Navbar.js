@@ -3,6 +3,7 @@ import { Link } from "react-scroll";
 import { FaBars } from "react-icons/fa";
 import Typist from "react-typist-component";
 import pizza_icon from "../assets/icons/pizza-v1.gif";
+import { HoverEffectColor } from "../effects/HoverEffects";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -12,8 +13,8 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 z-50 w-full px-8 py-4 bg-[#cedcf5] shadow-xl ">
-      <div className="container mx-auto max-w-5xl">
+    <nav className="fixed top-0 left-0 z-50 w-full px-8 py-4 bg-greyblue shadow-xl">
+      <div className="container mx-auto max-w-4xl">
         <div className="flex justify-between items-center">
           <div className="flex">
             <img src={pizza_icon} alt="ppicon" className="w-8 h-8 mr-2" />
@@ -21,9 +22,12 @@ const Navbar = () => {
               to="home"
               smooth={true}
               duration={500}
-              className="xsm:text-2xl lg:text-xl font-bold text-gray-800 cursor-pointer space-x-2"
+              className="xsm:text-2xl md:text-lg lg:text-xl text-gray-800 cursor-pointer"
             >
-              {`Pixel Pizza `}
+              {HoverEffectColor(
+                "hover:text-blue-600 font-pixel",
+                "Pixel Pizza"
+              )}
               <span className="hidden lg:inline-block">
                 <Typist
                   typingDelay={100}
@@ -31,16 +35,17 @@ const Navbar = () => {
                   backspaceDelay={25}
                   cursor={<span className="cursor">|</span>}
                 >
-                  <span>{`: `}</span>
-                  <span className="text-orange-500">Legendary </span>Flavor!
+                  <span className="font-extrabold">{`: `}</span>
+                  <span className="text-orange-500 font-bold">Legendary </span>
+                  <span className="font-bold">Flavor!</span>
                   <Typist.Delay ms={150} />
                   <Typist.Backspace count={17} />
-                  <span className="text-indigo-500">Epic </span>
-                  <span>Ingredients!</span>
+                  <span className="text-indigo-500 font-bold">Epic </span>
+                  <span className="font-bold">Ingredients!</span>
                   <Typist.Delay ms={150} />
                   <Typist.Backspace count={17} />
-                  <span className="text-yellow-500">Rare </span>
-                  <span>Prices!</span>
+                  <span className="text-yellow-500 font-bold">Rare </span>
+                  <span className="font-bold">Prices!</span>
                   <Typist.Delay ms={150} />
                   <Typist.Backspace count={12} />
                 </Typist>
@@ -49,7 +54,7 @@ const Navbar = () => {
           </div>
 
           <div className="hidden md:block">
-            <ul className="flex space-x-8 text-lg font-bold">
+            <ul className="flex space-x-4 text-lg md:text-xl font-semibold">
               <li>
                 <Link
                   to="order"
@@ -57,7 +62,10 @@ const Navbar = () => {
                   duration={500}
                   className="text-gray-800 hover:text-indigo-500 cursor-pointer"
                 >
-                  Order Online
+                  {HoverEffectColor(
+                    "hover:text-blue-600 hover:font-pixel",
+                    "Order Online"
+                  )}
                 </Link>
               </li>
               <li>
@@ -67,7 +75,10 @@ const Navbar = () => {
                   duration={500}
                   className="text-gray-800 hover:text-indigo-500 cursor-pointer"
                 >
-                  Locations
+                  {HoverEffectColor(
+                    "hover:text-blue-600 hover:font-pixel",
+                    "Locations"
+                  )}
                 </Link>
               </li>
               <li>
@@ -77,7 +88,10 @@ const Navbar = () => {
                   duration={500}
                   className="text-gray-800 hover:text-indigo-500 cursor-pointer"
                 >
-                  Menu
+                  {HoverEffectColor(
+                    "hover:text-blue-600 hover:font-pixel",
+                    "Menu"
+                  )}
                 </Link>
               </li>
               <li>
@@ -87,7 +101,10 @@ const Navbar = () => {
                   duration={500}
                   className="text-gray-800 hover:text-indigo-500 cursor-pointer"
                 >
-                  Tracker
+                  {HoverEffectColor(
+                    "hover:text-blue-600 hover:font-pixel",
+                    "Tracker"
+                  )}
                 </Link>
               </li>
               <li>
@@ -97,7 +114,10 @@ const Navbar = () => {
                   duration={500}
                   className="text-gray-800 hover:text-indigo-500 cursor-pointer"
                 >
-                  Log in
+                  {HoverEffectColor(
+                    "hover:text-blue-600 hover:font-pixel",
+                    "Log in"
+                  )}
                 </Link>
               </li>
             </ul>
