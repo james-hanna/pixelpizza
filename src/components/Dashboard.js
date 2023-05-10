@@ -8,29 +8,29 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="sm:pt-[25%] p-8 md:pt-[10%] xl:pt-[6%] 2xl:pt-[4%]">
-      <div className="banner overflow-hidden">
+    <div className="sm:pt-[20%] p-8 md:pt-[8%] xl:pt-[6%] 2xl:pt-[4%]">
+      <div className="banner overflow-hidden sm:pt-[25px] sm:pb-[20px]">
         <img src={PPPW} alt="nothing" />
       </div>
       <div className="">
         <div className="flex justify-center items-center py-[20px]">
           <button
-            className="text-2xl bg-greyblue rounded-lg outline-none p-2 hover:shadow-lg border-2 border-gray-800 hover:border-blue-600 "
+            className="relative text-2xl rounded-lg outline-none p-2 border-2 border-gray-800 hover:border-blue-800 bg-greyblue hover:bg-gradient-to-b from-greyblue to-greyblue2 transition-colors duration-300 ease-in-out"
             onClick={handleOrderClick}
           >
             <span className="font-pixel">
-              {HoverEffectColor("hover:text-orange-800", "Start Your Order")}
+              {HoverEffectColor("hover:text-blue-700", "Start Your Order")}
             </span>
           </button>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-[35px]">
-          <div className="bg-greyblue p-6 rounded-lg outline-none hover:shadow-lg border-2 border-gray-800 hover:border-blue-600">
+          <div className="p-6 rounded-lg outline-none hover:shadow-lg border-2 border-gray-800 hover:border-blue-800 bg-greyblue hover:bg-gradient-to-b from-greyblue to-greyblue2 transition-colors duration-300 ease-in-out">
             <div className=" font-pixel flex flex-col justify-center items-center">
               <h2 className="text-xl">
-                {HoverEffectColor("hover:text-blue-600", "Featured")}
+                {HoverEffectColor("hover:text-blue-700", "Featured")}
               </h2>
               <h2 className="text-xl mb-4">
-                {HoverEffectColor("hover:text-blue-600", "Specials")}
+                {HoverEffectColor("hover:text-blue-700", "Specials")}
               </h2>
             </div>
             <p>Check out our current specials:</p>
@@ -40,13 +40,13 @@ const Dashboard = () => {
               <li>50% off Pixel Wings on Wednesdays</li>
             </ul>
           </div>
-          <div className="bg-greyblue p-6 rounded-lg outline-none hover:shadow-lg border-2 border-gray-800 hover:border-blue-600">
+          <div className="p-6 rounded-lg outline-none hover:shadow-lg border-2 border-gray-800 hover:border-blue-800 bg-greyblue hover:bg-gradient-to-b from-greyblue to-greyblue2 transition-colors duration-300 ease-in-out">
             <div className=" font-pixel flex flex-col justify-center items-center">
               <h2 className="text-xl">
-                {HoverEffectColor("hover:text-blue-600", "Newest")}
+                {HoverEffectColor("hover:text-blue-700", "Newest")}
               </h2>
               <h2 className="text-xl mb-4">
-                {HoverEffectColor("hover:text-blue-600", "Item")}
+                {HoverEffectColor("hover:text-blue-700", "Item")}
               </h2>
             </div>
             <p>Introducing our latest creation:</p>
@@ -59,13 +59,15 @@ const Dashboard = () => {
               <li>Served on a brioche bun with a side of Pixel Fries</li>
             </ul>
           </div>
-          <div className="bg-greyblue p-6 rounded-lg outline-none hover:shadow-lg border-2 border-gray-800 hover:border-blue-600">
+          <div className="p-6 rounded-lg outline-none hover:shadow-lg border-2 border-gray-800 hover:border-blue-800 bg-greyblue hover:bg-gradient-to-b from-greyblue to-greyblue2 transition-colors duration-300 ease-in-out">
             <div className=" font-pixel flex flex-col justify-center items-center">
               <h2 className="text-xl">
-                {HoverEffectColor("hover:text-blue-600", "Customer")}
+                {HoverEffectColor("hover:text-blue-700", "Cust")}
+                <span className="text-slate-700 hover:text-orange-800">o</span>
+                {HoverEffectColor("hover:text-blue-700", "mer")}
               </h2>
               <h2 className="text-xl mb-4">
-                {HoverEffectColor("hover:text-blue-600", "Reviews")}
+                {HoverEffectColor("hover:text-blue-700", "Reviews")}
               </h2>
             </div>
             <p>See what our customers are saying:</p>

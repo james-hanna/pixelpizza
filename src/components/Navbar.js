@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-scroll";
+import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import Typist from "react-typist-component";
 import pizza_icon from "../assets/icons/pizza-v1.gif";
@@ -19,13 +19,13 @@ const Navbar = () => {
           <div className="flex">
             <img src={pizza_icon} alt="ppicon" className="w-8 h-8 mr-2" />
             <Link
-              to="home"
+              to="/"
               smooth={true}
               duration={500}
               className="xsm:text-2xl md:text-lg lg:text-xl text-gray-800 cursor-pointer"
             >
               {HoverEffectColor(
-                "hover:text-blue-600 font-pixel",
+                "hover:text-blue-700 font-pixel",
                 "Pixel Pizza"
               )}
               <span className="hidden lg:inline-block">
@@ -57,67 +57,52 @@ const Navbar = () => {
             <ul className="flex space-x-4 text-lg md:text-xl font-semibold">
               <li>
                 <Link
-                  to="order"
+                  to="/order"
                   smooth={true}
                   duration={500}
-                  className="text-gray-800 hover:text-indigo-500 cursor-pointer"
+                  className="text-gray-800 cursor-pointer"
                 >
-                  {HoverEffectColor(
-                    "hover:text-blue-600 hover:font-pixel",
-                    "Order Online"
-                  )}
+                  {HoverEffectColor("hover:text-blue-700", "Order Online")}
                 </Link>
               </li>
               <li>
                 <Link
-                  to="locations"
+                  to="/locations"
                   smooth={true}
                   duration={500}
-                  className="text-gray-800 hover:text-indigo-500 cursor-pointer"
+                  className="text-gray-800 cursor-pointer"
                 >
-                  {HoverEffectColor(
-                    "hover:text-blue-600 hover:font-pixel",
-                    "Locations"
-                  )}
+                  {HoverEffectColor("hover:text-blue-700", "Locations")}
                 </Link>
               </li>
               <li>
                 <Link
-                  to="menu"
+                  to="/menu"
                   smooth={true}
                   duration={500}
-                  className="text-gray-800 hover:text-indigo-500 cursor-pointer"
+                  className="text-gray-800 cursor-pointer"
                 >
-                  {HoverEffectColor(
-                    "hover:text-blue-600 hover:font-pixel",
-                    "Menu"
-                  )}
+                  {HoverEffectColor("hover:text-blue-700", "Menu")}
                 </Link>
               </li>
               <li>
                 <Link
-                  to="tracker"
+                  to="/tracker"
                   smooth={true}
                   duration={500}
-                  className="text-gray-800 hover:text-indigo-500 cursor-pointer"
+                  className="text-gray-800 cursor-pointer"
                 >
-                  {HoverEffectColor(
-                    "hover:text-blue-600 hover:font-pixel",
-                    "Tracker"
-                  )}
+                  {HoverEffectColor("hover:text-blue-700", "Tracker")}
                 </Link>
               </li>
               <li>
                 <Link
-                  to="sign_in"
+                  to="/login"
                   smooth={true}
                   duration={500}
-                  className="text-gray-800 hover:text-indigo-500 cursor-pointer"
+                  className="text-gray-800 cursor-pointer"
                 >
-                  {HoverEffectColor(
-                    "hover:text-blue-600 hover:font-pixel",
-                    "Log in"
-                  )}
+                  {HoverEffectColor("hover:text-blue-700", "Log in")}
                 </Link>
               </li>
             </ul>

@@ -5,6 +5,8 @@ module.exports = {
     extend: {
       colors: {
         greyblue: "#cedcf5",
+        greyblue2: "rgb(175 210 240)",
+        greyblue3: "rgb(190 200 240)",
       },
       screens: {
         xsm: "320px",
