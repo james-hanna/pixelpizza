@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { registerUser, loginUser } from "../api";
 
 const LoginRegistrationForm = () => {
   const [activeTab, setActiveTab] = useState("login");
@@ -17,16 +18,34 @@ const LoginRegistrationForm = () => {
     setActiveTab(tab);
   };
 
+  // Registration Logic
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
 
-    //registration logic here
+    try {
+      // Call the registerUser API function
+      console.log("registerData", registerData);
+      const response = await registerUser(registerData);
+      console.log("Registration successful!", response);
+      // You can add your own logic for handling the successful registration
+    } catch (error) {
+      console.error("Registration failed!", error);
+      // You can add your own logic for handling the registration error
+    }
   };
 
+  //Login Logic
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
-
-    //login logic here
+    try {
+      // Call the loginUser API function
+      const response = await loginUser(loginData);
+      console.log("Login successful!", response);
+      // You can add your own logic for handling the successful login
+    } catch (error) {
+      console.error("Login failed!", error);
+      // You can add your own logic for handling the login error
+    }
   };
 
   const handleRegisterInputChange = (e) => {
@@ -65,7 +84,7 @@ const LoginRegistrationForm = () => {
           </button>
         </nav>
       </div>
-      <div className="pt-8">
+      <div className="pt-8 border-2 border-t-0 border-slate-600 rounded-b-lg">
         {activeTab === "login" ? (
           <div className="container flex flex-col items-center">
             <h2 className="text-2xl font-bold mb-4">Login</h2>

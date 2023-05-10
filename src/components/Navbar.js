@@ -20,7 +20,7 @@ const Navbar = () => {
             <img src={pizza_icon} alt="ppicon" className="w-8 h-8 mr-2" />
             <Link
               to="/"
-              smooth={true}
+              smooth="true"
               duration={500}
               className="xsm:text-2xl md:text-lg lg:text-xl text-gray-800 cursor-pointer"
             >
@@ -58,7 +58,7 @@ const Navbar = () => {
               <li>
                 <Link
                   to="/order"
-                  smooth={true}
+                  smooth="true"
                   duration={500}
                   className="text-gray-800 cursor-pointer"
                 >
@@ -68,7 +68,7 @@ const Navbar = () => {
               <li>
                 <Link
                   to="/locations"
-                  smooth={true}
+                  smooth="true"
                   duration={500}
                   className="text-gray-800 cursor-pointer"
                 >
@@ -78,7 +78,7 @@ const Navbar = () => {
               <li>
                 <Link
                   to="/menu"
-                  smooth={true}
+                  smooth="true"
                   duration={500}
                   className="text-gray-800 cursor-pointer"
                 >
@@ -88,7 +88,7 @@ const Navbar = () => {
               <li>
                 <Link
                   to="/tracker"
-                  smooth={true}
+                  smooth="true"
                   duration={500}
                   className="text-gray-800 cursor-pointer"
                 >
@@ -98,7 +98,7 @@ const Navbar = () => {
               <li>
                 <Link
                   to="/login"
-                  smooth={true}
+                  smooth="true"
                   duration={500}
                   className="text-gray-800 cursor-pointer"
                 >
@@ -126,7 +126,7 @@ const Navbar = () => {
       >
         <Link
           to="order"
-          smooth={true}
+          smooth="true"
           duration={500}
           className="block py-2 mx-auto text-xl font-medium text-gray-800 hover:text-indigo-500 cursor-pointer"
           onClick={toggleNav}
@@ -135,7 +135,7 @@ const Navbar = () => {
         </Link>
         <Link
           to="locations"
-          smooth={true}
+          smooth="true"
           duration={500}
           className="block py-2 mx-auto text-xl font-medium text-gray-800 hover:text-indigo-500 cursor-pointer"
           onClick={toggleNav}
@@ -144,7 +144,7 @@ const Navbar = () => {
         </Link>
         <Link
           to="Menu"
-          smooth={true}
+          smooth="true"
           duration={500}
           className="block py-2 mx-auto text-xl font-medium text-gray-800 hover:text-indigo-500 cursor-pointer"
           onClick={toggleNav}
@@ -153,7 +153,7 @@ const Navbar = () => {
         </Link>
         <Link
           to="Tracker"
-          smooth={true}
+          smooth="true"
           duration={500}
           className="block py-2 mx-auto text-xl font-medium text-gray-800 hover:text-indigo-500 cursor-pointer"
           onClick={toggleNav}
@@ -162,7 +162,7 @@ const Navbar = () => {
         </Link>
         <Link
           to="login"
-          smooth={true}
+          smooth="true"
           duration={500}
           className="block py-2 mx-auto text-xl font-medium text-gray-800 hover:text-indigo-500 cursor-pointer"
           onClick={toggleNav}
