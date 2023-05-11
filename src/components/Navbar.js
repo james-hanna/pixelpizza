@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import Typist from "react-typist-component";
 import pizza_icon from "../assets/icons/pizza-v1.gif";
 import { HoverEffectColor } from "../effects/HoverEffects";
+import { AuthContext } from "../AuthContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const { user } = useContext(AuthContext);
 
   const toggleNav = () => {
     setIsOpen(!isOpen);
@@ -95,16 +97,32 @@ const Navbar = () => {
                   {HoverEffectColor("hover:text-blue-700", "Tracker")}
                 </Link>
               </li>
-              <li>
-                <Link
-                  to="/login"
-                  smooth="true"
-                  duration={500}
-                  className="text-gray-800 cursor-pointer"
-                >
-                  {HoverEffectColor("hover:text-blue-700", "Log in")}
-                </Link>
-              </li>
+              {user ? (
+                <li>
+                  <Link
+                    to="/profile"
+                    smooth="true"
+                    duration={500}
+                    className="text-gray-800 cursor-pointer"
+                  >
+                    {HoverEffectColor(
+                      "hover:text-blue-700",
+                      user && user.username
+                    )}
+                  </Link>
+                </li>
+              ) : (
+                <li>
+                  <Link
+                    to="/login"
+                    smooth="true"
+                    duration={500}
+                    className="text-gray-800 cursor-pointer"
+                  >
+                    {HoverEffectColor("hover:text-blue-700", "Log in")}
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
 

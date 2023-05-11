@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { registerUser, loginUser } from "../api";
+import { useNavigate } from "react-router-dom";
 
 const LoginRegistrationForm = () => {
+  const navigate = useNavigate();
+  const [newError, setNewError] = useState(null);
   const [activeTab, setActiveTab] = useState("login");
   const [registerData, setRegisterData] = useState({
     username: "",
@@ -24,27 +27,58 @@ const LoginRegistrationForm = () => {
 
     try {
       // Call the registerUser API function
-      console.log("registerData", registerData);
       const response = await registerUser(registerData);
+      // If registration is successful
       console.log("Registration successful!", response);
+      setNewError("Registration successful!");
+      setTimeout(() => {
+        setNewError(null);
+        navigate("/");
+      }, 3000);
+
       // You can add your own logic for handling the successful registration
+      // For example, redirecting the user to a different page or displaying a success message
     } catch (error) {
       console.error("Registration failed!", error);
+      // If there's an error during registration
       // You can add your own logic for handling the registration error
+
+      setNewError(error.response.data.error); // Update the error message field to response.data.message
     }
   };
+
+  // //Login Logic
+  // const handleLoginSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     // Call the loginUser API function
+  //     const response = await loginUser(loginData);
+  //     // If the Call was successful
+  //     console.log("Login successful!", response);
+  //     const { token, username, email } = response;
+  //     setNewError(null);
+  //     console.log("token:", token, "username:", username, "email:", email);
+  //     setUser({ token, username, email });
+  //     navigate("/");
+  //   } catch (error) {
+  //     console.error("Login failed!", error);
+  //   }
+  // };
 
   //Login Logic
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Call the loginUser API function
       const response = await loginUser(loginData);
-      console.log("Login successful!", response);
-      // You can add your own logic for handling the successful login
+      const { token } = response;
+
+      // Store the token in localStorage
+      localStorage.setItem("token", token);
+
+      setNewError(null);
+      navigate("/");
     } catch (error) {
       console.error("Login failed!", error);
-      // You can add your own logic for handling the login error
     }
   };
 
@@ -88,9 +122,12 @@ const LoginRegistrationForm = () => {
         {activeTab === "login" ? (
           <div className="container flex flex-col items-center">
             <h2 className="text-2xl font-bold mb-4">Login</h2>
-            <form className="mb-6 flex flex-col" onSubmit={handleLoginSubmit}>
+            <form
+              className="mb-6 flex flex-col w-[250px]"
+              onSubmit={handleLoginSubmit}
+            >
               <input
-                className="input mb-4"
+                className="input mb-4 text-center rounded-md"
                 type="text"
                 name="username"
                 placeholder="Username"
@@ -98,15 +135,18 @@ const LoginRegistrationForm = () => {
                 onChange={handleLoginInputChange}
               />
               <input
-                className="input mb-4"
+                className="input mb-4 text-center rounded-md"
                 type="password"
                 name="password"
                 placeholder="Password"
                 value={loginData.password}
                 onChange={handleLoginInputChange}
               />
+              {newError && (
+                <p className="text-red-500 mb-4 text-center">{newError}</p>
+              )}
               <button
-                className="btn bg-greyblue3 rounded-sm mt-[40px]"
+                className="btn bg-greyblue3 rounded-md mt-[40px] border-2 border-slate-600"
                 type="submit"
               >
                 Login
@@ -117,11 +157,11 @@ const LoginRegistrationForm = () => {
           <div className="container flex flex-col items-center">
             <h2 className="text-2xl font-bold mb-4">Registration</h2>
             <form
-              className="mb-6 flex flex-col"
+              className="mb-6 flex flex-col w-[250px] "
               onSubmit={handleRegisterSubmit}
             >
               <input
-                className="input mb-4"
+                className="input mb-4 text-center rounded-md "
                 type="text"
                 name="username"
                 placeholder="Username"
@@ -129,7 +169,7 @@ const LoginRegistrationForm = () => {
                 onChange={handleRegisterInputChange}
               />
               <input
-                className="input mb-4"
+                className="input mb-4 text-center rounded-md"
                 type="email"
                 name="email"
                 placeholder="Email"
@@ -137,14 +177,29 @@ const LoginRegistrationForm = () => {
                 onChange={handleRegisterInputChange}
               />
               <input
-                className="input mb-4"
+                className="input mb-4 text-center rounded-md"
                 type="password"
                 name="password"
                 placeholder="Password"
                 value={registerData.password}
                 onChange={handleRegisterInputChange}
               />
-              <button className="btn bg-greyblue3 rounded-sm" type="submit">
+              {newError &&
+                newError ===
+                  "Username or email already exists"(
+                    <p className="text-red-500 mb-4 text-center">{newError}</p>
+                  )}
+              {newError &&
+                newError ===
+                  "Registration successful"(
+                    <p className="text-green-500 mb-4 text-center">
+                      {newError}
+                    </p>
+                  )}
+              <button
+                className="btn bg-greyblue3 rounded-md border-2 border-slate-600 shadow-md"
+                type="submit"
+              >
                 Register
               </button>
             </form>
