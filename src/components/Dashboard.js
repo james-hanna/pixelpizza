@@ -1,11 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import { HoverEffectColor } from "../effects/HoverEffects";
 import PPPW from "../assets/icons/PPP_wide.png";
 
 const Dashboard = () => {
-  const handleOrderClick = () => {
-    // logic for handling order click
-    console.log("rekt");
-  };
+  const navigate = useNavigate();
 
   return (
     <div className="sm:pt-[20%] p-8 md:pt-[8%] xl:pt-[6%] 2xl:pt-[4%]">
@@ -16,7 +14,7 @@ const Dashboard = () => {
         <div className="flex justify-center items-center py-[20px]">
           <button
             className="relative text-2xl rounded-lg outline-none p-2 border-2 border-gray-800 hover:border-blue-800 bg-greyblue hover:bg-gradient-to-b from-greyblue to-greyblue2 transition-colors duration-300 ease-in-out"
-            onClick={handleOrderClick}
+            onClick={() => navigate("/order")}
           >
             <span className="font-pixel">
               {HoverEffectColor("hover:text-blue-700", "Start Your Order")}

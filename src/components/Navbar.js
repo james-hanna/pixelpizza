@@ -1,14 +1,22 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import Typist from "react-typist-component";
 import pizza_icon from "../assets/icons/pizza-v1.gif";
 import { HoverEffectColor } from "../effects/HoverEffects";
 import { AuthContext } from "../AuthContext";
+import MobileNav from "./MobileNav";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const { user } = useContext(AuthContext);
+  const [userName, setUserName] = useState("Log in");
+
+  useEffect(() => {
+    if (user) {
+      setUserName(user.username);
+    }
+  }, [user]);
 
   const toggleNav = () => {
     setIsOpen(!isOpen);
@@ -97,21 +105,7 @@ const Navbar = () => {
                   {HoverEffectColor("hover:text-blue-700", "Tracker")}
                 </Link>
               </li>
-              {user ? (
-                <li>
-                  <Link
-                    to="/profile"
-                    smooth="true"
-                    duration={500}
-                    className="text-gray-800 cursor-pointer"
-                  >
-                    {HoverEffectColor(
-                      "hover:text-blue-700",
-                      user && user.username
-                    )}
-                  </Link>
-                </li>
-              ) : (
+              {userName === "Log in" ? (
                 <li>
                   <Link
                     to="/login"
@@ -120,6 +114,17 @@ const Navbar = () => {
                     className="text-gray-800 cursor-pointer"
                   >
                     {HoverEffectColor("hover:text-blue-700", "Log in")}
+                  </Link>
+                </li>
+              ) : (
+                <li>
+                  <Link
+                    to="/profile"
+                    smooth="true"
+                    duration={500}
+                    className="text-gray-800 cursor-pointer"
+                  >
+                    {HoverEffectColor("hover:text-blue-700", user.username)}
                   </Link>
                 </li>
               )}
@@ -142,51 +147,7 @@ const Navbar = () => {
           isOpen ? "flex" : "hidden"
         } md:hidden flex-col text-center mt-4`}
       >
-        <Link
-          to="order"
-          smooth="true"
-          duration={500}
-          className="block py-2 mx-auto text-xl font-medium text-gray-800 hover:text-indigo-500 cursor-pointer"
-          onClick={toggleNav}
-        >
-          Order Online
-        </Link>
-        <Link
-          to="locations"
-          smooth="true"
-          duration={500}
-          className="block py-2 mx-auto text-xl font-medium text-gray-800 hover:text-indigo-500 cursor-pointer"
-          onClick={toggleNav}
-        >
-          Locations
-        </Link>
-        <Link
-          to="Menu"
-          smooth="true"
-          duration={500}
-          className="block py-2 mx-auto text-xl font-medium text-gray-800 hover:text-indigo-500 cursor-pointer"
-          onClick={toggleNav}
-        >
-          Menu
-        </Link>
-        <Link
-          to="Tracker"
-          smooth="true"
-          duration={500}
-          className="block py-2 mx-auto text-xl font-medium text-gray-800 hover:text-indigo-500 cursor-pointer"
-          onClick={toggleNav}
-        >
-          Tracker
-        </Link>
-        <Link
-          to="login"
-          smooth="true"
-          duration={500}
-          className="block py-2 mx-auto text-xl font-medium text-gray-800 hover:text-indigo-500 cursor-pointer"
-          onClick={toggleNav}
-        >
-          Log In
-        </Link>
+        <MobileNav />
       </div>
     </nav>
   );

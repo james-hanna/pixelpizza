@@ -41,24 +41,13 @@ export const loginUser = async (credentials) => {
   }
 };
 
-// Testing Connection to the backend
-export const testConnection = async () => {
+// Function to handle GET request to /pizza
+export const getPizzas = async () => {
   try {
-    const response = await fetch(`${API_BASE_URL}/users/test`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.error);
-    }
-
-    const data = await response;
-    return data;
+    const response = await axios.get(`${API_BASE_URL}/pizza`);
+    return response.data;
   } catch (error) {
-    console.error("Error registering user:", error);
+    console.error("Error fetching pizzas:", error);
     throw error;
   }
 };
