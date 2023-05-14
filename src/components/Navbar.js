@@ -23,7 +23,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 z-50 w-full px-8 py-4 bg-greyblue shadow-xl">
+    <nav className="fixed top-0 left-0 z-50 w-full px-8 py-4 bg-greyblue shadow-xl border-b-2 border-gray-800 border-double">
       <div className="container mx-auto max-w-4xl">
         <div className="flex justify-between items-center">
           <div className="flex">
@@ -72,7 +72,10 @@ const Navbar = () => {
                   duration={500}
                   className="text-gray-800 cursor-pointer"
                 >
-                  {HoverEffectColor("hover:text-blue-700", "Order Online")}
+                  {HoverEffectColor(
+                    "hover:text-blue-700 hover:drop-shadow-[0_5.2px_5.2px_rgba(0,0,230,0.7)]",
+                    "Order Online"
+                  )}
                 </Link>
               </li>
               <li>
@@ -82,7 +85,10 @@ const Navbar = () => {
                   duration={500}
                   className="text-gray-800 cursor-pointer"
                 >
-                  {HoverEffectColor("hover:text-blue-700", "Locations")}
+                  {HoverEffectColor(
+                    "hover:text-blue-700 hover:drop-shadow-[0_5.2px_5.2px_rgba(0,0,230,0.7)]",
+                    "Locations"
+                  )}
                 </Link>
               </li>
               <li>
@@ -92,7 +98,10 @@ const Navbar = () => {
                   duration={500}
                   className="text-gray-800 cursor-pointer"
                 >
-                  {HoverEffectColor("hover:text-blue-700", "Menu")}
+                  {HoverEffectColor(
+                    "hover:text-blue-700 hover:drop-shadow-[0_5.2px_5.2px_rgba(0,0,230,0.7)]",
+                    "Menu"
+                  )}
                 </Link>
               </li>
               <li>
@@ -102,7 +111,10 @@ const Navbar = () => {
                   duration={500}
                   className="text-gray-800 cursor-pointer"
                 >
-                  {HoverEffectColor("hover:text-blue-700", "Tracker")}
+                  {HoverEffectColor(
+                    "hover:text-blue-700 hover:drop-shadow-[0_5.2px_5.2px_rgba(0,0,230,0.7)]",
+                    "Tracker"
+                  )}
                 </Link>
               </li>
               {userName === "Log in" ? (
@@ -113,7 +125,10 @@ const Navbar = () => {
                     duration={500}
                     className="text-gray-800 cursor-pointer"
                   >
-                    {HoverEffectColor("hover:text-blue-700", "Log in")}
+                    {HoverEffectColor(
+                      "hover:text-blue-700 hover:drop-shadow-[0_5.2px_5.2px_rgba(0,0,230,0.7)]",
+                      "Log in"
+                    )}
                   </Link>
                 </li>
               ) : (
@@ -124,7 +139,10 @@ const Navbar = () => {
                     duration={500}
                     className="text-gray-800 cursor-pointer"
                   >
-                    {HoverEffectColor("hover:text-blue-700", user.username)}
+                    {HoverEffectColor(
+                      "hover:text-blue-700 hover:drop-shadow-[0_5.2px_5.2px_rgba(0,0,230,0.7)]",
+                      user.username
+                    )}
                   </Link>
                 </li>
               )}
@@ -147,7 +165,7 @@ const Navbar = () => {
           isOpen ? "flex" : "hidden"
         } md:hidden flex-col text-center mt-4`}
       >
-        <MobileNav />
+        <MobileNav userName={userName} setIsOpen={setIsOpen} isOpen={isOpen} />
       </div>
     </nav>
   );

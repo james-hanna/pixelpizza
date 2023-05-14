@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const MobileNav = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
+const MobileNav = ({ userName, setIsOpen, isOpen }) => {
   const toggleNav = () => {
     setIsOpen(!isOpen);
   };
@@ -14,7 +12,7 @@ const MobileNav = () => {
         to="order"
         smooth="true"
         duration={500}
-        className="block py-2 mx-auto text-xl font-medium text-gray-800 hover:text-indigo-500 cursor-pointer"
+        className="block py-2 mx-auto text-xl font-medium text-gray-800 hover:text-blue-800 cursor-pointer border-b-2 border-gray-800"
         onClick={toggleNav}
       >
         Order Online
@@ -23,7 +21,7 @@ const MobileNav = () => {
         to="locations"
         smooth="true"
         duration={500}
-        className="block py-2 mx-auto text-xl font-medium text-gray-800 hover:text-indigo-500 cursor-pointer"
+        className="block py-2 mx-auto text-xl font-medium text-gray-800 hover:text-blue-800 cursor-pointer border-b-2 border-gray-800"
         onClick={toggleNav}
       >
         Locations
@@ -32,7 +30,7 @@ const MobileNav = () => {
         to="Menu"
         smooth="true"
         duration={500}
-        className="block py-2 mx-auto text-xl font-medium text-gray-800 hover:text-indigo-500 cursor-pointer"
+        className="block py-2 mx-auto text-xl font-medium text-gray-800 hover:text-blue-800 cursor-pointer border-b-2 border-gray-800"
         onClick={toggleNav}
       >
         Menu
@@ -41,20 +39,40 @@ const MobileNav = () => {
         to="Tracker"
         smooth="true"
         duration={500}
-        className="block py-2 mx-auto text-xl font-medium text-gray-800 hover:text-indigo-500 cursor-pointer"
+        className="block py-2 mx-auto text-xl font-medium text-gray-800 hover:text-blue-800 cursor-pointer border-b-2 border-gray-800"
         onClick={toggleNav}
       >
         Tracker
       </Link>
-      <Link
-        to="login"
-        smooth="true"
-        duration={500}
-        className="block py-2 mx-auto text-xl font-medium text-gray-800 hover:text-indigo-500 cursor-pointer"
-        onClick={toggleNav}
-      >
-        Log In
-      </Link>
+      {userName === "Log in" ? (
+        <Link
+          to="/login"
+          smooth="true"
+          duration={500}
+          className="block py-2 mx-auto text-xl font-medium text-gray-800 hover:text-blue-800 cursor-pointer border-b-2 border-gray-800"
+        >
+          "Log in"
+        </Link>
+      ) : (
+        <span>
+          <Link
+            to="/profile"
+            smooth="true"
+            duration={500}
+            className="block py-2 mx-auto text-xl font-medium text-gray-800 hover:text-blue-800 cursor-pointer border-b-2 border-gray-800"
+          >
+            {userName}
+          </Link>
+          <Link
+            onClick={toggleNav}
+            smooth="true"
+            duration={500}
+            className="block py-2 mx-auto text-xl font-medium text-gray-800 hover:text-blue-800 cursor-pointer border-b-2 border-gray-800"
+          >
+            Log out
+          </Link>
+        </span>
+      )}
     </div>
   );
 };
