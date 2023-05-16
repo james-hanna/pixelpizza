@@ -7,6 +7,7 @@ import Login from "./components/Login";
 import { AuthProvider } from "./AuthContext";
 import Order from "./components/Order";
 import Menu from "./components/Menu";
+import Locations from "./components/Locations";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
               <Route path="/login" element={<Login />}></Route>
               <Route path="/order" element={<Order />}></Route>
               <Route path="/menu" element={<Menu />}></Route>
+              <Route path="/locations" element={<Locations />}></Route>
             </Routes>
           </div>
         </div>

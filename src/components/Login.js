@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { registerUser, loginUser } from "../api";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../AuthContext";
 
 const LoginRegistrationForm = () => {
   const navigate = useNavigate();
+  const { updateUser } = useContext(AuthContext);
   const [newError, setNewError] = useState(null);
   const [activeTab, setActiveTab] = useState("login");
   const [registerData, setRegisterData] = useState({
@@ -51,10 +53,12 @@ const LoginRegistrationForm = () => {
       // Store the token in localStorage
       localStorage.setItem("token", token);
       console.log(localStorage.token);
+      // Update user context with the logged-in user
+      updateUser(token);
       setNewError(null);
       setTimeout(() => {
         navigate("/");
-      }, 3000);
+      }, 1000);
     } catch (error) {
       console.error("Login failed!", error);
     }

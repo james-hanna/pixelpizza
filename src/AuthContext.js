@@ -21,8 +21,22 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
+  const updateUser = (token) => {
+    if (token) {
+      try {
+        const decodedToken = jwt_decode(token);
+        const { userId, username } = decodedToken;
+        setUser({ userId, username });
+      } catch (error) {
+        console.error("Invalid token:", error.message);
+        setUser(null); // Set user to null if the token is invalid or expired
+        localStorage.removeItem("token"); // Remove the invalid token from localStorage
+      }
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
+    <AuthContext.Provider value={{ user, updateUser }}>
       {children}
     </AuthContext.Provider>
   );

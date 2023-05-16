@@ -37,7 +37,7 @@ const Menu = () => {
   }, []);
 
   return (
-    <div className="flex flex-col justify-center items-center py-[20%] ">
+    <div className="flex flex-col justify-center items-center py-[20%]">
       <div className="bg-greyblue p-[15px] rounded-md border-2 border-gray-800 border-double">
         <div className="text-6xl drop-shadow-lg">
           {HoverEffectColor(
@@ -46,7 +46,7 @@ const Menu = () => {
           )}
         </div>
       </div>
-      <div className="text-lg font-semibold text-gray-800 mt-[100px]">
+      <div className="text-lg font-semibold text-gray-800 mt-[100px] grid xsm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 lg:gap-x-20">
         {pizzas.map((pizza) => (
           <div
             key={pizza.id}
@@ -72,7 +72,7 @@ const Menu = () => {
                 {pizza.ingredients.split(", ").map((ingredient) => (
                   <p
                     key={ingredient}
-                    className="p-[5px] border-2 rounded-md border-gray-800 border-double bg-white text-center"
+                    className="p-[3px] m-[2px] border-2 rounded-md border-gray-800 border-double bg-white text-center"
                   >
                     {ingredient}
                   </p>

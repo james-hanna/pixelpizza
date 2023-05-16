@@ -1,9 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { AuthProvider } from "../AuthContext";
 
 const MobileNav = ({ userName, setIsOpen, isOpen }) => {
+  const navigate = useNavigate();
   const toggleNav = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    AuthProvider.updateUser(null);
+
+    toggleNav();
+    navigate("/login");
   };
 
   return (
@@ -47,11 +58,12 @@ const MobileNav = ({ userName, setIsOpen, isOpen }) => {
       {userName === "Log in" ? (
         <Link
           to="/login"
+          onClick={toggleNav}
           smooth="true"
           duration={500}
           className="block py-2 mx-auto text-xl font-medium text-gray-800 hover:text-blue-800 cursor-pointer border-b-2 border-gray-800"
         >
-          "Log in"
+          Log in
         </Link>
       ) : (
         <span>
@@ -64,7 +76,7 @@ const MobileNav = ({ userName, setIsOpen, isOpen }) => {
             {userName}
           </Link>
           <Link
-            onClick={toggleNav}
+            onClick={() => handleLogout()}
             smooth="true"
             duration={500}
             className="block py-2 mx-auto text-xl font-medium text-gray-800 hover:text-blue-800 cursor-pointer border-b-2 border-gray-800"

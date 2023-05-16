@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import Typist from "react-typist-component";
@@ -10,13 +10,6 @@ import MobileNav from "./MobileNav";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user } = useContext(AuthContext);
-  const [userName, setUserName] = useState("Log in");
-
-  useEffect(() => {
-    if (user) {
-      setUserName(user.username);
-    }
-  }, [user]);
 
   const toggleNav = () => {
     setIsOpen(!isOpen);
@@ -26,7 +19,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 z-50 w-full px-8 py-4 bg-greyblue shadow-xl border-b-2 border-gray-800 border-double">
       <div className="container mx-auto max-w-4xl">
         <div className="flex justify-between items-center">
-          <div className="flex">
+          <div className="flex items-center">
             <img src={pizza_icon} alt="ppicon" className="w-8 h-8 mr-2" />
             <Link
               to="/"
@@ -117,21 +110,7 @@ const Navbar = () => {
                   )}
                 </Link>
               </li>
-              {userName === "Log in" ? (
-                <li>
-                  <Link
-                    to="/login"
-                    smooth="true"
-                    duration={500}
-                    className="text-gray-800 cursor-pointer"
-                  >
-                    {HoverEffectColor(
-                      "hover:text-blue-700 hover:drop-shadow-[0_5.2px_5.2px_rgba(0,0,230,0.7)]",
-                      "Log in"
-                    )}
-                  </Link>
-                </li>
-              ) : (
+              {user ? (
                 <li>
                   <Link
                     to="/profile"
@@ -142,6 +121,20 @@ const Navbar = () => {
                     {HoverEffectColor(
                       "hover:text-blue-700 hover:drop-shadow-[0_5.2px_5.2px_rgba(0,0,230,0.7)]",
                       user.username
+                    )}
+                  </Link>
+                </li>
+              ) : (
+                <li>
+                  <Link
+                    to="/login"
+                    smooth="true"
+                    duration={500}
+                    className="text-gray-800 cursor-pointer"
+                  >
+                    {HoverEffectColor(
+                      "hover:text-blue-700 hover:drop-shadow-[0_5.2px_5.2px_rgba(0,0,230,0.7)]",
+                      "Log in"
                     )}
                   </Link>
                 </li>
@@ -165,7 +158,11 @@ const Navbar = () => {
           isOpen ? "flex" : "hidden"
         } md:hidden flex-col text-center mt-4`}
       >
-        <MobileNav userName={userName} setIsOpen={setIsOpen} isOpen={isOpen} />
+        <MobileNav
+          userName={user?.username || "Log in"}
+          setIsOpen={setIsOpen}
+          isOpen={isOpen}
+        />
       </div>
     </nav>
   );
