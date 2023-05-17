@@ -8,6 +8,7 @@ import { AuthProvider } from "./AuthContext";
 import Order from "./components/Order";
 import Menu from "./components/Menu";
 import Locations from "./components/Locations";
+import Tracker from "./components/Tracker";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
               <Route path="/order" element={<Order />}></Route>
               <Route path="/menu" element={<Menu />}></Route>
               <Route path="/locations" element={<Locations />}></Route>
+              <Route path="/tracker" element={<Tracker />}></Route>
             </Routes>
           </div>
         </div>

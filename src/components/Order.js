@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Cart from "./Cart";
 
 const Order = () => {
   const [orderType, setOrderType] = useState("");
@@ -42,6 +43,8 @@ const Order = () => {
             </button>
           </div>
         </div>
+
+        {<Cart />}
 
         {orderType === "Pick Up" && (
           <div>

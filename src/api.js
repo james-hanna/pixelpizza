@@ -61,6 +61,7 @@ export const logoutUser = async () => {
     throw error;
   }
 };
+
 //Function to add an item to the cart
 export const addToCart = async (productId, quantity, token) => {
   try {
@@ -88,7 +89,7 @@ export const getCartItems = async (token) => {
   try {
     const response = await axios.get(`${API_BASE_URL}/cart`, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `${token}`,
       },
     });
     return response.data;
