@@ -16,19 +16,23 @@ const Cart = () => {
     };
 
     fetchCartItems();
-  }, []);
+  }, [token]);
 
   return (
-    <div className="flex m-auto flex-col bg-greyblue justify-center items-center">
+    <span className="flex m-auto flex-col bg-greyblue justify-center items-center">
       <h2>Cart Items</h2>
-      {cartItems.map((item) => (
-        <div key={item.product_id}>
-          <p>{item.name}</p>
-          <p>Quantity: {item.quantity}</p>
-          <p>Price: {item.price}</p>
-        </div>
-      ))}
-    </div>
+      {cartItems.length > 0 ? (
+        cartItems.map((item, index) => (
+          <div key={index}>
+            <p>{item.name}</p>
+            <p>Quantity: {item.quantity}</p>
+            <p>Price: {item.price}</p>
+          </div>
+        ))
+      ) : (
+        <div>Cart Empty</div>
+      )}
+    </span>
   );
 };
 

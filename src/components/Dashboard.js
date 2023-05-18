@@ -6,7 +6,7 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="sm:pt-[20%] p-8 md:pt-[8%] xl:pt-[6%] 2xl:pt-[4%]">
+    <div className="sm:pt-[20%] p-8 md:pt-4 xl:pt-[6%] 2xl:pt-[4%]">
       <div className="banner overflow-hidden sm:pt-[25px] sm:pb-[20px]">
         <img src={PPPW} alt="nothing" />
       </div>

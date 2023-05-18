@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { HoverEffectColor } from "../effects/HoverEffects";
-import { getPizzas } from "../api";
+import { getPizzas, addToCart } from "../api";
 
 const Menu = () => {
+  const token = localStorage.token;
   const [pizzas, setPizzas] = useState([]);
   const [ingreds, setIngreds] = useState({
     pizza: "",
@@ -36,6 +37,15 @@ const Menu = () => {
     fetchPizzas();
   }, []);
 
+  const handleAddToCart = async (product_id, quantity) => {
+    try {
+      const response = await addToCart(product_id, quantity, token);
+      console.log(response);
+    } catch (error) {
+      console.error("Error adding item to cart:", error);
+    }
+  };
+
   return (
     <div className="flex flex-col justify-center items-center py-[20%]">
       <div className="bg-greyblue p-[15px] rounded-md border-2 border-gray-800 border-double">
@@ -50,37 +60,48 @@ const Menu = () => {
         {pizzas.map((pizza) => (
           <div
             key={pizza.id}
-            className="flex flex-col items-center bg-greyblue p-[15px] mb-10 mx-auto xsm:w-[250px] sm:w-[340px] rounded-md border-2 border-double border-gray-800 "
-            onClick={() => showIngs(pizza.name)}
+            className="flex flex-col items-center min-h-[340px] bg-greyblue p-[15px] mb-10 mx-auto xsm:w-[250px] sm:w-[340px] rounded-md border-2 border-double border-gray-800 "
           >
-            <img
-              src={pizza.imgUrl}
-              alt={pizza.name}
-              className="w-[200px] h-[200px] rounded-md border-2 border-gray-800 border-double"
-            />
-            <h2>{pizza.name}</h2>
-            <p>{pizza.description}</p>
-
-            {ingreds.pizza === pizza.name && ingreds.show === true && (
-              <span
-                className={` grid ${
-                  pizza.ingredients.split(",").length > 1
-                    ? "grid-cols-2"
-                    : "grid-cols-1"
-                }`}
+            {ingreds.pizza === pizza.name && ingreds.show === true ? (
+              <div
+                onClick={() => showIngs(pizza.name)}
+                className="flex flex-col items-center"
               >
-                {pizza.ingredients.split(", ").map((ingredient) => (
-                  <p
-                    key={ingredient}
-                    className="p-[3px] m-[2px] border-2 rounded-md border-gray-800 border-double bg-white text-center"
-                  >
-                    {ingredient}
-                  </p>
-                ))}
-              </span>
+                <span className="flex flex-col items-center mb-5">
+                  <h2 className="font-bold drop-shadow-md">{pizza.name}</h2>
+                  <p>{pizza.description}</p>
+                </span>
+                <span className="w-[170px]">
+                  {pizza.ingredients.split(", ").map((ingredient) => (
+                    <p
+                      key={ingredient}
+                      className="my-[5px] h-[40px] border-2 rounded-md border-gray-800 border-double bg-white text-center"
+                    >
+                      {ingredient}
+                    </p>
+                  ))}
+                </span>
+              </div>
+            ) : (
+              <div
+                onClick={() => showIngs(pizza.name)}
+                className="flex flex-col items-center"
+              >
+                <img
+                  src={pizza.imgUrl}
+                  alt={pizza.name}
+                  className="w-[200px] h-[200px] rounded-md border-2 border-gray-800 border-double"
+                />
+                <h2>{pizza.name}</h2>
+                <span className="">Price: ${pizza.price}</span>
+              </div>
             )}
-
-            <span className="pt-[10px]">Price: ${pizza.price}</span>
+            <button
+              onClick={() => handleAddToCart(pizza.id, 1)}
+              className="mt-[10px] bg-greyblue3 border-2 border-slate-800 border-double text-slate-700 py-2 px-4 rounded"
+            >
+              Add to Cart
+            </button>
           </div>
         ))}
       </div>

@@ -43,9 +43,7 @@ const Order = () => {
             </button>
           </div>
         </div>
-
-        {<Cart />}
-
+        <span className="flex mt-[50px]">{<Cart />}</span>
         {orderType === "Pick Up" && (
           <div>
             <div className="bg-greyblue flex flex-col items-center border-2 border-double border-slate-800 rounded-md mt-[10%] w-[320px] sm:w-[350px] m-auto">

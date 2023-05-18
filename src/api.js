@@ -73,7 +73,7 @@ export const addToCart = async (productId, quantity, token) => {
       },
       {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `${token}`,
         },
       }
     );
