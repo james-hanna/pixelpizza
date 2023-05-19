@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Cart from "./Cart";
+import { HoverEffectColor } from "../effects/HoverEffects";
 
 const Order = () => {
   const [orderType, setOrderType] = useState("");
@@ -23,7 +24,7 @@ const Order = () => {
         <div className="flex xsm:justify-around md:justify-center md:gap-[50px]">
           <div className="h-[75px] w-[150px] border-2 bg-greyblue3 border-slate-900 border-double rounded-md flex justify-center items-center drop-shadow-lg">
             <button
-              className={`border-2 border-double border-slate-600 h-[90%] w-[90%] rounded-md bg-greyblue ${
+              className={`border-2 border-double border-slate-600 h-[90%] w-[95%] rounded-md bg-greyblue ${
                 orderType === "Pick Up" ? " font-bold" : ""
               }`}
               onClick={() => handleOrderType("Pick Up")}
@@ -34,7 +35,7 @@ const Order = () => {
 
           <div className="h-[75px] w-[150px] border-2 bg-greyblue3 border-slate-900 border-double rounded-md flex justify-center items-center drop-shadow-lg">
             <button
-              className={`border-2 border-double border-slate-600 h-[90%] w-[90%] rounded-md bg-greyblue ${
+              className={`border-2 border-double border-slate-600 h-[90%] w-[95%] rounded-md bg-greyblue ${
                 orderType === "Delivery" ? " font-bold" : ""
               }`}
               onClick={() => handleOrderType("Delivery")}
@@ -47,13 +48,18 @@ const Order = () => {
         {orderType === "Pick Up" && (
           <div>
             <div className="bg-greyblue flex flex-col items-center border-2 border-double border-slate-800 rounded-md mt-[10%] w-[320px] sm:w-[350px] m-auto">
-              <h2 className="text-2xl mt-4">Pick Up Details</h2>
+              <div className="p-4">
+                {HoverEffectColor(
+                  "hover:text-blue-700 font-pixel text-xl",
+                  "Pick Up Details"
+                )}
+              </div>
               <form
                 onSubmit={handleSubmit}
                 className="mt-4 flex justify-center flex-col"
               >
                 <div>
-                  <label htmlFor="name" className="mr-2">
+                  <label htmlFor="name" className="mr-2 font-semibold">
                     Name:
                   </label>
                   <input
@@ -67,7 +73,7 @@ const Order = () => {
                 </div>
                 <button
                   type="submit"
-                  className="my-4 bg-greyblue3 border-2 border-slate-800 border-double text-slate-700 py-2 px-4 rounded"
+                  className="font-semibold my-4 bg-greyblue3 border-2 border-slate-800 border-double text-slate-700 py-2 px-4 rounded"
                 >
                   Place Order
                 </button>
@@ -78,13 +84,18 @@ const Order = () => {
 
         {orderType === "Delivery" && (
           <div className="bg-greyblue flex flex-col items-center border-2 border-double border-slate-800 rounded-md mt-[10%] w-[320px] sm:w-[350px] m-auto">
-            <h2 className="text-2xl mt-4">Delivery Details</h2>
+            <div className="p-4">
+              {HoverEffectColor(
+                "hover:text-blue-700 font-pixel text-xl",
+                "Delivery Details"
+              )}
+            </div>
             <form
               onSubmit={handleSubmit}
               className="mt-4 flex justify-center flex-col"
             >
               <div className="flex justify-between">
-                <label htmlFor="name" className="mr-2">
+                <label htmlFor="name" className="mr-2 font-semibold">
                   Name:
                 </label>
                 <input
@@ -97,7 +108,7 @@ const Order = () => {
                 />
               </div>
               <div className="flex justify-between">
-                <label htmlFor="address" className="mr-2">
+                <label htmlFor="address" className="mr-2 font-semibold">
                   Address:
                 </label>
                 <input
@@ -110,7 +121,7 @@ const Order = () => {
                 />
               </div>
               <div className="flex justify-between">
-                <label htmlFor="phone" className="mr-2">
+                <label htmlFor="phone" className="mr-2 font-semibold">
                   Phone:
                 </label>
                 <input
@@ -123,7 +134,7 @@ const Order = () => {
                 />
               </div>
               <div className="flex flex-col justify-between">
-                <label htmlFor="instructions" className="mr-2">
+                <label htmlFor="instructions" className="mr-2 font-semibold">
                   Delivery Instructions:
                 </label>
                 <textarea
@@ -135,7 +146,7 @@ const Order = () => {
               </div>
               <button
                 type="submit"
-                className="my-4 bg-greyblue3 border-2 border-slate-600 border-double text-slate-700 py-2 px-4 rounded"
+                className="font-semibold my-4 bg-greyblue3 border-2 border-slate-600 border-double text-slate-700 py-2 px-4 rounded"
               >
                 Place Order
               </button>

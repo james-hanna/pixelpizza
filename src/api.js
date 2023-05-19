@@ -102,9 +102,10 @@ export const getCartItems = async (token) => {
 //Function to remove an item from the cart
 export const removeFromCart = async (productId, token) => {
   try {
+    console.log(`${API_BASE_URL}/cart/${productId}`);
     const response = await axios.delete(`${API_BASE_URL}/cart/${productId}`, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `${token}`,
       },
     });
     return response.data;
